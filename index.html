@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Galaxy Portfolio</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #110515, #221545, #68388D, #B26FCB);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(17, 5, 21, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #B26FCB !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            margin-right: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #B26FCB !important;
+        }
+
+        .btn-custom {
+            background-color: #B26FCB;
+            color: white;
+            border-radius: 50px;
+            padding: 14px 35px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #855AB4;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            padding: 150px 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            color: #B26FCB;
+            font-weight: 600;
+            font-size: 2rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #ddd;
+            font-size: 1.2rem;
+        }
+
+        /* Tombol dan media sosial */
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-actions .social-icons i {
+            transition: 0.3s;
+        }
+
+        .hero-actions .social-icons i:hover {
+            color: #B26FCB;
+            transform: scale(1.15);
+        }
+
+        /* Garis pemisah elegan */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #B26FCB, transparent);
+            margin-top: 30px;
+            border-radius: 2px;
+        }
+
+        /* Flip Card */
+        .flip-card {
+            background-color: transparent;
+            width: 380px;
+            height: 420px;
+            perspective: 1000px;
+            margin: auto;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: drop-shadow(0 0 25px rgba(178, 108, 203, 0.4));
+        }
+
+        .flip-card-back {
+            background: rgba(17, 5, 21, 0.9);
+            transform: rotateY(180deg);
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            box-shadow: 0 0 25px rgba(178, 108, 203, 0.3);
+        }
+
+        .flip-card-back h4 {
+            color: #B26FCB;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-item {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .info-item i {
+            color: #B26FCB;
+            margin-right: 10px;
+        }
+
+        /* RESPONSIVE SETTINGS */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .flip-card {
+                width: 280px;
+                height: 320px;
+                margin-bottom: 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .btn-custom {
+                padding: 12px 28px;
+            }
+        }
+
+        /* === Tech Logo Carousel === */
+        .tech-carousel {
+            overflow: hidden;
+            background: linear-gradient(135deg, #1b0630, #2d0c52, #42116e, #5f1a91);
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: scrollInfinite 40s linear infinite;
+        }
+
+        .carousel {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 110px;
+            /* 🔧 jarak antar ikon diperlebar */
+            padding-right: 120px;
+            /* 🔧 jarak tambahan di akhir set untuk hilangkan “nempel” */
+        }
+
+        .carousel img {
+            height: 70px;
+            filter: grayscale(1) brightness(0.75);
+            opacity: 0.7;
+            transition: all 0.4s ease;
+        }
+
+        .carousel img:hover {
+            filter: none;
+            opacity: 1;
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 15px rgba(175, 108, 255, 0.9));
+        }
+
+        @keyframes scrollInfinite {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel img {
+                height: 50px;
+            }
+
+            .carousel {
+                gap: 70px;
+                padding-right: 90px;
+            }
+
+            .carousel-track {
+                animation-duration: 30s;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: #110515;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">GALAXY<span style="color:#fff;">PORT</span></a>
+            <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificate">Certificate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-custom ms-3">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero container" data-aos="fade-up">
+        <div class="row align-items-center justify-content-between">
+
+            <!-- Teks -->
+            <div class="col-lg-6 order-2 order-lg-1">
+                <h6 style="color:#855AB4;">HELLO, I'M</h6>
+                <h1>ADEKZA BACHRUDIN RIZKY</h1>
+                <h2>I'M A <span id="typed-text"></span></h2>
+                <p>Creative designer with passion for turning imagination into visual experiences. Let’s make something
+                    amazing together!</p>
+
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-custom">Get in Touch</a>
+                    <div class="social-icons d-flex align-items-center">
+                        <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-3"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-instagram fs-3"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-linkedin fs-3"></i></a>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+
+            <!-- Gambar / Flip Card -->
+            <div class="col-lg-5 text-center order-1 order-lg-2 mb-4 mb-lg-0" data-aos="zoom-in">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="FOTO ADEKZA.png" alt="profile">
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Personal Information</h4>
+                            <div class="info-item"><i class="bi bi-person-circle"></i> Adekza Bachrudin Rizky</div>
+                            <div class="info-item"><i class="bi bi-calendar-event"></i> 25 April 2008</div>
+                            <div class="info-item"><i class="bi bi-telephone"></i> +62 857-3319-5034</div>
+                            <div class="info-item"><i class="bi bi-envelope"></i> jenna.ortega@email.com</div>
+                            <div class="info-item"><i class="bi bi-geo-alt"></i> Jawa Timur, Indonesia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tech Logo Carousel -->
+    <section id="skills" class="tech-carousel py-5">
+        <div class="carousel-track">
+            <div class="carousel">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    alt="JS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                    alt="Bootstrap">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                    alt="Tailwind">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode">
+            </div>
+
+            <!-- duplikat untuk efek loop -->
+            <div class="carousel">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    alt="JS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                    alt="Bootstrap">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                    alt="Tailwind">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 Galaxy Portfolio — Made with 💜 Cosmic Design
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        var typed = new Typed('#typed-text', {
+            strings: ['DESIGNER', 'DEVELOPER', 'PHOTOGRAPHER'],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: true
+        });
+    </script>
+</body>
+
+</html>
