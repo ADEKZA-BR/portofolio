@@ -27,6 +27,7 @@
         .navbar {
             background: rgba(17, 5, 21, 0.7);
             backdrop-filter: blur(10px);
+            width: 100%;
         }
 
         .navbar-brand {
@@ -42,6 +43,14 @@
             transition: 0.3s;
         }
 
+        .navbar-toggler {
+            position: relative;
+            right: 0;
+            margin-left: auto;
+            transition: none !important;
+            transform: none !important;
+        }
+        
         .nav-link:hover {
             color: #B26FCB !important;
         }
@@ -329,7 +338,12 @@
             transform: translateY(-3px);
             box-shadow: 0 0 20px rgba(178, 111, 203, 0.5);
         }
-        
+
+        #typed-title, #typed-text1, #typed-text2 {
+            display: inline-block;
+            min-height: 1em;
+        }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -538,5 +552,6 @@
 
 
 </html>
+
 
 
